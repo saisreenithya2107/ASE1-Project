@@ -26,7 +26,7 @@ def signup(request):
                 'token':account_activation_token.make_token(user),
             })
             to_email = form.cleaned_data.get('email')
-            send_mail(mail_subject, message, "bhogadiyashwanth9@gmail.com", [to_email])
+            send_mail(mail_subject, message, "vismith.24.adappa@gmail.com", [to_email])
             return HttpResponse('Please confirm your email address to complete the registration')
     else:
         form = SignupForm()
