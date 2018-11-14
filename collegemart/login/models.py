@@ -11,5 +11,5 @@ class Profile(models.Model):
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     rating = models.FloatField(null=False, default=0)
     photo = models.ImageField(upload_to='ProfilePhotos')
-    activation_link = models.CharField(null=False)
+    activation_link = models.CharField(max_length=200, null=False)
     bio = models.TextField(max_length=500, blank=True)
