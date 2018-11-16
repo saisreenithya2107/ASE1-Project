@@ -12,7 +12,7 @@ class Category(models.Model):
 class Products_Selling(models.Model):
     pname = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(blank=False, null=False)
-    photo = models.ImageField(upload_to='Selling Products Photos')
+    photo = models.ImageField(upload_to='SellingProductsPhotos')
     Category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    Seller = models.ForeignKey("login.Profile", on_delete=models.CASCADE)
+    Seller = models.ForeignKey("registration.Profile", on_delete=models.CASCADE)
     amount = models.FloatField(null=False, blank=False)

@@ -9,11 +9,12 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from .models import Profile
 
 def signup(request):
     if request.method == 'POST':
         form1 = SignupForm(request.POST)
-        form2 = ProfileForm(request.POST)
+        form2 = ProfileForm(request.POST, request.FILES)
         if form1.is_valid() and form2.is_valid():
             user = form1.save(commit=False)
             user.is_active = False
@@ -23,7 +24,7 @@ def signup(request):
             profile.save()
             current_site = get_current_site(request)
             mail_subject = 'Activate your Account.'
-            message = render_to_string('login/acc_active_email.html', {
+            message = render_to_string('registration/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)).decode(),
@@ -35,7 +36,7 @@ def signup(request):
     else:
         form1 = SignupForm()
         form2 = ProfileForm()
-    return render(request, 'login/signup.html', {'form1': form1, 'form2': form2,})
+    return render(request, 'registration/signup.html', {'form1': form1, 'form2': form2,})
 
 def activate(request, uidb64, token):
     try:
