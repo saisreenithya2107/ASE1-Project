@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+  <body>
+    {% block content %}
+      <h2>Sign up</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+          {% for field in form1 %}
+          <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+              <small style="display: inline">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+          {% endfor %}
+          {% for field in form2 %}
+          <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            {% if field.help_text %}
+              <small style="display: inline">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+          {% endfor %}
+        <input type="submit" value="Sign Up">
+      </form>
+      <script>
+        $( function() {
+          $( "#id_dob" ).datepicker({
+              changeMonth: true,
+              changeYear: true,
+              yearRange: "1990:2017",
+          })
+        } );
+    </script>
+    {% endblock %}
+  </body>
+</html>
