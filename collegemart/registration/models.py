@@ -15,3 +15,9 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='ProfilePhotos/', null=True, blank=True)
     activation_link = models.CharField(max_length=200, null=False)
     bio = models.TextField(max_length=500, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+    def __repr__(self):
+        return self.user
