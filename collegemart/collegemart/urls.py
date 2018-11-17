@@ -21,4 +21,5 @@ urlpatterns = [
     path('feedbackpart/', include('feedbackpart.urls')),
     path('registration/', include('registration.urls')),
     path('accounts/', include('accounts.urls')),
+    path('paytm/', include('paytm.urls')),
 ]
