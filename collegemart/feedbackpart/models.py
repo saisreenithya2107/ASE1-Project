@@ -5,4 +5,3 @@ class Userlog(models.Model):
     email=models.CharField(max_length=150)
     comments=models.CharField(max_length=500)
 
-
