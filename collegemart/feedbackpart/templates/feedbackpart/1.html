@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <title>Feedback</title>
+
+     	<link rel="stylesheet" href="{% static "feedbackpart/form2.css" %}">
+        <link rel="stylesheet" href="{% static "feedbackpart/form.css" %}" >
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="imagebg"></div>
+            <div class="container">
+                <div class="formbox z-depth-5">
+                    <h3>Feedback:</h3>
+                    <div class="row">
+                        <form action="{% url 'feedbackpart.home' %}" method="post" class="col s12">
+                            {%  csrf_token %}
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="name" type="text" name="name" required class="validate" placeholder="Name">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" name="email" required class="validate" placeholder="E-mail">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="comments" name="comments" class="materialize-textarea" class="validate" placeholder="Comments" ></textarea>
+
+                                </div>
+                            </div>
+                            <div>
+                                <button class="waves-effect waves-light btn submitbtn" type="submit">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
